@@ -1,29 +1,17 @@
 package com.test.practice;
 
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.expression.spel.support.StandardEvaluationContext;
-
 public class Example {
 
     private int start;
     private int end;
-    private String condition;
 
-    @Value("${condition}")
-    private boolean result;
+    private Nested nested;
 
-    @Value("#{250 > 200 && 200 < 4000}") // true
-    private boolean test;
-
-    public Example(int start, int end, String condition) {
+    public Example(int start, int end, Nested nested) {
         this.start = start;
         this.end = end;
-        this.condition= condition;
-
-    }
-
-    public Example() {
+        this.nested = nested;
     }
 
     public int getStart() {
@@ -42,20 +30,12 @@ public class Example {
         this.end = end;
     }
 
-    public String getCondition() {
-        return condition;
+    public Nested getNested() {
+        return nested;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public boolean isTest() {
-        return test;
-    }
-
-    public void setTest(boolean test) {
-        this.test = test;
+    public void setNested(Nested nested) {
+        this.nested = nested;
     }
 
     @Override
@@ -63,9 +43,7 @@ public class Example {
         return "Example{" +
                 "start=" + start +
                 ", end=" + end +
-                ", condition='" + condition + '\'' +
-                ", result=" + result +
-                ", test=" + test +
+                ", nested=" + nested +
                 '}';
     }
 }
